@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Digitário | Explore Digimon</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+         <main id="catalogo" class="catalog container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ENCICLOPÉDIA</p>
+                    <h1>Encontre seu parceiro</h1>
+                </div>
+                <p id="result-count" class="result-count" aria-live="polite">Carregando registros...</p>
+            </div>
+            <form id="search-form" class="controls" role="search">
+                <label class="search-field" for="search">
+                    <span class="sr-only">Buscar Digimon por nome</span>
+                    <span aria-hidden="true" class="lupa">⌕</span>
+                    <input id="search" name="search" type="search" placeholder="Buscar por nome" autocomplete="off" />
+                </label>
+                <label class="select-field" for="level">
+                    <span class="sr-only">Filtrar por nível</span>
+                    <select id="level" name="level">
+                        <option value="">Todos os níveis</option>
+                        <option value="In Training">In Training</option>
+                        <option value="Rookie">Rookie</option>
+                        <option value="Champion">Champion</option>
+                        <option value="Ultimate">Ultimate</option>
+                        <option value="Mega">Mega</option>
+                    </select>
+                </label>
+                <button class="button button-dark" type="submit">Buscar</button>
+            </form>
+
+            <div id="status" class="status" aria-live="polite"></div>
+            <section id="digimon-grid" class="digimon-grid" aria-label="Resultados da busca"></section>
+            <button id="load-more" class="button button-outline" type="button" hidden>Carregar mais</button>
+        </main>
+
+        <dialog id="details-dialog" class="details-dialog" aria-labelledby="dialog-title">
+            <button id="close-dialog" class="close-button" type="button" aria-label="Fechar detalhes">×</button>
+            <div id="dialog-content"></div>
+        </dialog>
+        <script src="script.js" defer></script>
+    </body>
+</html>
