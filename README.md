@@ -1,34 +1,50 @@
 # DigiDex PWA
 
-Projeto acadêmico adaptado para Progressive Web App (PWA).
+Aplicação web progressiva que exibe uma enciclopédia de Digimon consumindo a Digi-API.
 
-## Recursos
-- Instalável como PWA.
+**Principais recursos**
+- Instalável como PWA (manifest + `serviceWorker`).
 - Interface responsiva para celular e desktop.
-- Geolocalização pelo navegador (`navigator.geolocation`).
-- Service Worker para cache do App Shell.
-- Manifesto PWA com ícones 192x192 e 512x512.
-- Consulta à Digi-API para listar e detalhar Digimon.
+- Geolocalização via `navigator.geolocation` (opcional, pede permissão ao usuário).
+- Service Worker para cache do App Shell (`sw.js`).
+- Consulta à Digi-API para listar e ver detalhes de Digimon (`script.js`).
 
-## Como executar
-Para a geolocalização e o Service Worker funcionarem, use HTTPS ou um servidor local.
+**Arquivos principais**
+- `index.html` — estrutura da aplicação e referência ao `manifest.json`.
+- `manifest.json` — manifesto PWA (agora usado pela aplicação).
+- `manifest.webmanifest` — duplicata antiga do manifesto; não é referenciada pelo código e pode ser removida se desejar.
+- `script.js` — lógica do cliente (busca, diálogo de detalhes, geolocalização, instalação PWA, registro do Service Worker).
+- `sw.js` — service worker que faz cache do App Shell.
+- `styles.css` — estilos da aplicação.
+- `icons/` — ícones usados pelo manifesto e favicon.
 
-Exemplo com Python:
+**Executando localmente (recomendado para testes)**
+Use um servidor estático para que o Service Worker e as features de PWA funcionem corretamente.
+
+Exemplo com Node (serve):
 
 ```bash
-python -m http.server 8000
+npx serve . -l 5000
 ```
 
-Depois abra:
+Ou com Python 3:
 
-`http://localhost:8000`
+```bash
+python -m http.server 5000
+```
 
-## Publicação no GitHub Pages
-1. Crie um repositório público no GitHub, por exemplo `digidex-pwa`.
-2. Envie todos os arquivos desta pasta para a branch `main`.
-3. No GitHub, abra **Settings > Pages**.
-4. Em **Build and deployment**, selecione **Deploy from a branch**.
-5. Selecione `main` e a pasta `/ (root)`.
-6. Salve e aguarde a publicação.
+Então abra:
 
-A aplicação ficará disponível no endereço do GitHub Pages do repositório.
+http://localhost:5000
+
+Para testar instalação e Service Worker, prefira HTTPS (Vercel, Netlify, ou outro host que ofereça TLS).
+
+**Deploy**
+- Vercel: basta apontar para o repositório e ele fará deploy automático (recomendado).
+- GitHub Pages: funciona para sites estáticos, mas o Service Worker pode ter limitações dependendo da configuração.
+
+**Observações sobre arquivos não utilizados**
+- `manifest.webmanifest` não é referenciado por `index.html` nem pelo `sw.js` e, portanto, é redundante após a adição de `manifest.json`.
+- A pasta `.github/` pode conter workflows; mantenha se houver CI/CD ativo.
+
+Se quiser que eu remova `manifest.webmanifest` ou limpe outros arquivos não utilizados, digo e eu removo e commito as mudanças.
