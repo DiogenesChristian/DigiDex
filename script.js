@@ -1,3 +1,4 @@
+
 const API = 'https://digi-api.com/api/v1/digimon';
 
 const form = document.querySelector('#search-form');
@@ -199,6 +200,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 });
 
 installButton.addEventListener('click', async () => {
+  console.log(deferredInstallPrompt)
   if (!deferredInstallPrompt) return;
   deferredInstallPrompt.prompt();
   await deferredInstallPrompt.userChoice;

@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Digitário | Explore Digimon</title>
+        <meta name="theme-color" content="#091526" />
+        <meta name="description" content="Uma enciclopédia de Digimon instalável e disponível offline." />
+        <link rel="manifest" href="manifest.json" />
+        <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
@@ -13,10 +17,11 @@
                     <p class="eyebrow">ENCICLOPÉDIA</p>
                     <h1>Encontre seu parceiro</h1>
                 </div>
-                <button class="button button-dark" id ="install-button">Buscar</button>
-                <button class="button button-dark" id ="location-button">Buscar</button>
+                <div class="app-actions">
+                    <button class="button button-outline" id="location-button" type="button">📍 Usar localização</button>
+                    <button class="button button-dark" id="install-button" type="button">Instalar aplicativo</button>
+                </div>
                 <p id="result-count" class="result-count" aria-live="polite">Carregando registros...</p>
-                <p id="location-status" class="result-count" aria-live="polite">Carregando registros...</p>
             </div>
             <form id="search-form" class="controls" role="search">
                 <label class="search-field" for="search">
@@ -39,6 +44,7 @@
             </form>
 
             <div id="status" class="status" aria-live="polite"></div>
+            <div id="location-status" class="status" aria-live="polite"></div>
             <section id="digimon-grid" class="digimon-grid" aria-label="Resultados da busca"></section>
             <button id="load-more" class="button button-outline" type="button" hidden>Carregar mais</button>
         </main>

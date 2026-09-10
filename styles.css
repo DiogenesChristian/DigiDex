@@ -325,3 +325,11 @@
          padding:1.6rem;
     }
  }
+.app-actions {
+     display:flex;
+     gap:.5rem;
+     margin-left:auto;
+}
+.app-actions .button-outline {
+     margin:0;
+}
